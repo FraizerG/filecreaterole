@@ -1,0 +1,23 @@
+---
+      - name: Create File Server A
+        file:
+          path: ~/test_file.txt
+          state: touch
+        when: ansible_ssh_host == '192.168.68.117'
+      - name: Create File on Server B
+        file:
+          path: ~/test_file.txt
+          state: touch    
+        when: ansible_ssh_host == '192.168.68.118'
+
+      - name: adding content inside file on Server A
+        lineinfile:
+          path: ~/test_file.txt
+          line: Server A
+        when: ansible_ssh_host == '192.168.68.117'
+
+      - name: adding content inside file on Server B
+        lineinfile:
+          path: ~/test_file.txt
+          line: Server A
+        when: ansible_ssh_host == '192.168.68.118'

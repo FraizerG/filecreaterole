@@ -1,0 +1,8 @@
+---
+  - name: File creation playbook
+    hosts: servers
+    roles:
+      - filemaker
+
+
+
